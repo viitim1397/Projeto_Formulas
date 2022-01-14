@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  app:
+    container_name: backend_php
+    build: .
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/html
+    tty: true
+    stdin_open: true
+
+  database:
+    container_name: banco_postgre
+    image: postgres:14-alpine
+    environment:     
+      POSTGRE_DB: BancoTeste
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - ./backup_banco:/var/lib/postgresql/data
+    ports:
+      - 5422:5432
+    tty: true
+    stdin_open: true
+    
+  pgAdmin:
+    container_name: pgAdmin
+    image: dpage/pgadmin4
+    ports:
+      - 8888:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@emcash.net
+      PGADMIN_DEFAULT_PASSWORD: emcash
