@@ -74,12 +74,13 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'dsn'	=> 'pgsql: host=localhost;port=5422;dbname=postgres',
+	'hostname' => 'banco_postgre',
 	'username' => 'root',
 	'password' => '1234',
-	'database' => 'BancoTeste',
-	'dbdriver' => 'postgres',
+	'database' => 'postgres',
+	'dbdriver' => 'postgre',
+	'port' 	   => 5422,
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

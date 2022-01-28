@@ -4,7 +4,17 @@
 
     public function create_triangule(float $area)
     {
-        $this->db->insert('Triangule', array('area' => $area));
+        $this->load->database();
+        $query = $this->db->insert('Triangule', array('area' => $area));
+
+        if($query)
+        {
+            return true;  
+        }
+        else
+        {
+            return false; 
+        }
     }
 
 }
